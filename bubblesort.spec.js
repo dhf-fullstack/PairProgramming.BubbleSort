@@ -2,6 +2,7 @@ describe('Bubble Sort', function(){
 
   beforeAll(function () {
     spyOn(window, "swap").and.callThrough();
+    spyOn(window, "comparison").and.callThrough()
   });
 
   it('handles an empty array', function(){
@@ -30,5 +31,25 @@ describe('Bubble Sort', function(){
     window.swap.calls.reset();
     bubbleSort([1,2,5,4,3])
     expect(window.swap.calls.count()).toEqual(3)
+  });
+  it('makes a comparison', function(){
+    window.comparison.calls.reset();
+    bubbleSort([])
+    expect(window.comparison.calls.count()).toEqual(0)
+  });
+  it('makes a comparison', function(){
+    window.comparison.calls.reset();
+    bubbleSort([4])
+    expect(window.comparison.calls.count()).toEqual(0)
+  });
+  it('makes a comparison', function(){
+    window.comparison.calls.reset();
+    bubbleSort([1,2,3])
+    expect(window.comparison.calls.count()).toEqual(2)
+  });
+  it('makes a comparison', function(){
+    window.comparison.calls.reset();
+    bubbleSort([1,2,4,3])
+    expect(window.comparison.calls.count()).toEqual(3)
   });
 });
