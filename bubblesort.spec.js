@@ -32,17 +32,17 @@ describe('Bubble Sort', function(){
     bubbleSort([1,2,5,4,3])
     expect(window.swap.calls.count()).toEqual(3)
   });
-  it('makes a comparison', function(){
+  it('does not make a comparison when an array is empty', function(){
     window.comparison.calls.reset();
     bubbleSort([])
     expect(window.comparison.calls.count()).toEqual(0)
   });
-  it('makes a comparison', function(){
+  it('does not make a comparison when array has only one element', function(){
     window.comparison.calls.reset();
     bubbleSort([4])
     expect(window.comparison.calls.count()).toEqual(0)
   });
-  it('makes a comparison', function(){
+  it('makes a comparison even when the array is already sorted', function(){
     window.comparison.calls.reset();
     bubbleSort([1,2,3])
     expect(window.comparison.calls.count()).toEqual(2)
