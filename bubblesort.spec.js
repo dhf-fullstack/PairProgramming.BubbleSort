@@ -1,4 +1,9 @@
 describe('Bubble Sort', function(){
+
+  beforeAll(function () {
+    spyOn(window, "swap").and.callThrough();
+  });
+
   it('handles an empty array', function(){
     expect( bubbleSort([]) ).toEqual( [] );
   });
@@ -10,5 +15,20 @@ describe('Bubble Sort', function(){
   });
   it('handles an array with multiple elements', function(){
     expect( bubbleSort([9, 4, 8, 5, 17, -5 ]) ).toEqual([-5, 4, 5, 8, 9, 17]);
-  })
+  });
+  it('sort empty array makes no swaps', function(){
+    window.swap.calls.reset();
+    bubbleSort([])
+    expect(window.swap.calls.count()).toEqual(0)
+  });
+  it('sort sorted array makes no swaps', function(){
+    window.swap.calls.reset();
+    bubbleSort([1,2,3,4,5])
+    expect(window.swap.calls.count()).toEqual(0)
+  });
+  it('sort makes expected number of swaps', function(){
+    window.swap.calls.reset();
+    bubbleSort([1,2,5,4,3])
+    expect(window.swap.calls.count()).toEqual(3)
+  });
 });
