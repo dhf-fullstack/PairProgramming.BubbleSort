@@ -50,6 +50,6 @@ describe('Bubble Sort', function(){
   it('makes a comparison', function(){
     window.comparison.calls.reset();
     bubbleSort([1,2,4,3])
-    expect(window.comparison.calls.count()).toEqual(3)
+    expect(window.comparison.calls.count()).toEqual(5)
   });
 });
